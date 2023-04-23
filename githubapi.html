@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>GitHub Explorer</title>
+    <link rel="stylesheet" href="githubstyle.css">
+    <script>
+        
+    </script>
+  </head>
+  <body>
+    <h1>GitHub Explorer</h1>
+    <input type="text" id="searchInput" placeholder="Search for a repository" />
+    <button id="searchButton">Search</button>
+    <div id="resultList"></div>
+    <script>
+      const searchInput = document.getElementById('searchInput');
+      const searchButton = document.getElementById('searchButton');
+      const resultList = document.getElementById('resultList');
+
+      async function search() {
+        const query = searchInput.value;
+        const response = await fetch(`https://api.github.com/search/repositories?q=${query}`);
+        const data = await response.json();
+        resultList.innerHTML = '';
+        data.items.forEach(item => {
+          const itemElement = document.createElement('div');
+          itemElement.innerHTML = `<a href="${item.html_url}">${item.full_name}</a> <span>(${item.stargazers_count} stars)</span>`;
+          resultList.appendChild(itemElement);
+        });
+      }
+
+      searchButton.addEventListener('click', search);
+    </script>
+  </body>
+</html>
