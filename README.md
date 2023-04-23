@@ -27,3 +27,5 @@ The `search` function in the JavaScript code makes a call to the GitHub API usin
 ## Credits
 
 This application was created by Prerna Choudhary during CodeClause Internship.
+
+### Link 🔗: https://prerna-choudhary.github.io/CodeClause_GitHub_explorer/
